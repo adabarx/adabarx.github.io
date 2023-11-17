@@ -1,1 +1,109 @@
-hi
+<body>
+	<div id="name">
+		<h1>Ashley</h1>	
+		<h3>Backend Engineer</h3>	
+	</div>
+	<div id="past-tech">
+		<p>Stuff Ive worked with and/or experimented with in the past:
+Languages
+Python
+PHP
+HTML/CSS
+Javascript
+Typescript
+Elm
+Lua
+Go
+Ocaml
+Rust
+Zig
+
+Frameworks/Libraries
+Vue.js
+Svelte
+Flask
+Laravel
+Tailwind
+Jquery
+Braintree Payments
+SCSS/SASS
+
+Databases
+MySQL
+PostgreSQL
+SurrealDB
+MongoDB
+Redis
+Elasticsearch
+</p>
+	<div id="projects">
+		<div id="keyboardgen">
+			<h3>Keyboard Generator</h3>
+			<p>Condition: Current priority. First time doing a lot of concurrent processing, very interesting problems.</p>
+			<p>I don't like the QWERTY layout, it hurts my wrists. I could use Dvorak or a Coleman variant, but there's one major problem: I use vim. Specifically, I need the HJKL keys to stay in the same place. So I created a program that uses a genetic algorithm: randomly generating/modifying keyboards and running them in a fitness function that uses all my repos as training data.</p>
+			<p>But there's a problem, local optima, I don't know if the generated keyboard is the best keyboard or just a good keyboard. The solution? Throw more compute at it! Generate 100 good keyboards and one of them is bound to be the most optimal one. But even when parallelizing with Rayon, it's a lot of work for my laptop.</p>
+			<p>The time complexity of the fitness function is inherently linear to the training data used. So the only way I can speed up the keyboard generation is by massively parallelizing the process. I would like to explore if there is any way I could utilize the GPU. But there are issues with that. So for now I'm implementing it as a REST API and building a separate composer app (now using Go!) so I can distribute the workload among all the old laptops, NUCs, and raspberry pis that I've accumulated over the years.</p>
+		</div>
+		<div id="fltcrsh">
+			<h3>Float Crush</h3>
+			<p>Condition: Core process and parameters are feature complete. Needs a decent GUI.</p>
+			<p>My first real audio effect! It started when I was trying to figure out why DAWs process samples with 32 bit floating point numbers instead of integers. After a lot of reading about IEEE 754, I ended up wanting to make a bitcrusher that could crush audio into any arbitrary floating point size. Using a two-stage modified binary search for quantization, I ended up creating a process where I could parameterize the size of the exponent and mantissa of the sample being processed, emulating the sound of audio that's been recorded to a lower floating point size.</p>
+			<p>Because I'm emulating lower bitrates with a search instead of trying to use efficient bitwise math, I'm able to parameterize a lot of fun aspects of the processing. Leading to a lot of fun, noisey sounds. I'm proud of this project. I have plans to expand it, including a good GUI, but I'm happy letting it rest for right now.</p>
+		</div>
+		<div id="gc2z">
+			<h3>Gain2Zero and Clip2Zero</h3>
+			<p>Condition: These two are fully completed. Going to complete the set with Limit2Zero at some point.</p>
+			<p>My first foray into audio programming! I built them because they were simple processes that fit a specific need in my audio engineering workflow.</p>
+		</div>
+		<div id="hyprtxt">
+			<h3>Hyprtxt</h3>
+			<p>Condition: Low priority,  but still being developed.</p>
+			<p>I would like to build a personal website one day, but I feel compelled to build my own static site generator and templating language first. The star of the show is the `hyprtxt!` procedural macro, which lets me write HTML in a template language in Rust using a syntax like Maud.</p>
+		</div>
+		<div id="katlang">
+			<h3>Katlang</h3>
+			<p>Condition: Abandoned, only got to step 2 of the ‘build a compiler' process. Coming back to the idea at a later point in time.</p>
+			<p>I believe that within Rust, there is a much smaller and cleaner language struggling to get out. This is my testing ground to try and find it. Right now, it just parses a source file into an AST. I eventually want to rewrite it all in Zig and have the compiler output Zig code. The idea is to make a language that has a similar feel to safe Rust. But instead of using unsafe Rust, you would switch to writing Zig.</p>
+		</div>
+		<div id="modula">
+			<h3>ModulaDAW</h3>
+			<p>Condition: Abandoned. Very buggy proof of concept. Coming back to the idea at a later point in time.</p>
+			<p>I would love to build DAW one day and this is the first whiteboard sketch of that idea. It's just a node graph where each node would be an effect and the graph connections would represent the signal paths. There are a lot of apps like this already, but they're annoying to use because the connecting paths look like a mess. So the hook for this is that I would develop a GPU-based path finding algorithm that the connections would use to self-organize and reduce visual clutter. It's very buggy and I'm going to rebuild it at some point once I've learned more.</p>
+		</div>
+	</div>
+
+	<div id="workxp">
+		<div id="wf">
+			<h3>Wells Fargo</h3>
+			<p>September 2019 - November 2021,  Minneapolis MN (remote)</p>
+			<ul>
+				<li>Collaborated with multiple teams to develop an enablement platform that aggregates and analyzes firewall data from WF's internal network</li>
+				<li>Designed an API that could power a web-based UI and allow other teams to query data/run jobs</li>
+				<li>Helped build a CI/CD pipeline using Ansible, Jenkins, and Docker</li>
+			</ul>
+		</div>
+		<div id="cc">
+			<h3>Wetfish and Chive Charities</h3>
+			<p>May 2017 - September 2019,  Austin TX (remote)</p>
+			<ul>
+				<li>Opened up a new source of donations by implementing Google/Apple Pay</li>
+				<li>Refactored large amounts of legacy code, reducing errors</li>
+				<li>Created tools for admins for use in audits</li>
+			</ul>
+		</div>
+		<div id="usi">
+			<h3>US Internet</h3>
+			<p>January 2013 - June 2018,  Minneapolis MN (remote)</p>
+			<p>This was before I was working as a developer. I got a job as an on-site tech, installing and fixing fiber and wireless internet in customer's homes. A cable guy, basically.</p>
+			<p>Then I worked my way into the backend, where I learned how to splice fiber, align antennas across skyscrapers, and monitor the health of the Minneapolis public wifi network. Duties included:</p>
+			<ul>
+				<li>Troubleshooting down nodes</li>
+				<li>Upgrade existing nodes</li>
+				<li>Planning new routes for the p2p node links in response to weather, construction, costs, new regulations, etc.</li>
+				<li>Regularly attending city planning meetings and giving input on future construction decisions on behalf of USI.</li>
+				<li>Maintaining contacts with third party reps: other telecoms, utilities, city workers in various positions, and police.</li>
+			</ul>
+			<p>Most importantly, this is where I learned how to keep my cool and make informed decisions while under pressure. I have a lot of nostalgia for this job, it's where I transitioned from an entry-level employee to being an experienced professional. if it weren't for constant mismanagement and incompatibilities with the culture, I would've probably worked there until retirement.</p>
+		</div>
+	</div>
+</body>
