@@ -3,63 +3,87 @@
 	<head>
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Mukta&display=swap');
-			* {
-				font-family: "Mukta", serif;
-			}
+			* { font-family: "Mukta", serif; }
 
-			body {
-				margin-left: 5%;
-				margin-right: 5%;
-			}
+			body { margin: 5% 5%; }
 
 			@media (min-aspect-ratio: 1/1) {
-				body {
-					margin-left: 10%;
-					margin-right: 10%;
-				}
+				body { margin: 5% 10%; }
 			}
 
-			@media (min-aspect-ratio: 5/4) {
-				body {
-					margin-left: 17%;
-					margin-right: 17%;
-				}
+			@media (min-aspect-ratio: 4/3) {
+				body { margin: 5% 17%; }
 			}
 
 			@media (min-aspect-ratio: 3/2) {
-				body {
-					margin-left: 25%;
-					margin-right: 25%;
-				}
+				body { margin: 5% 25%; }
 			}
 
 			@media (min-aspect-ratio: 2/1) {
-				body {
-					margin-left: 33%;
-					margin-right: 33%;
-				}
+				body { margin: 5% 33%; }
 			}
 
-			h1 {
-				font-size: 3em;
-			}
 
-			h2 {
-				font-size: 2.25em;
-			}
+			h1 { font-size: 3em; }
 
-			h3 {
-				font-size: 1.76em;
-			}
+			h3 { font-size: 1.76em; }
 
 			h5 {
 				font-size: 1em;
 				opacity: 0.62;
 			}
 
-			p {
+			p { font-size: 1.17em; }
+
+			ul.skills {
+				list-style-type: none; 
+				text-align: center;
+			}
+
+			ul.skills > li {
+				display: inline-block;
 				font-size: 1.17em;
 			}
+
+			li { 
+				float: center;
+				padding: 16px;
+			}
+
+			button.collapsible {
+				margin: 10px 0px;
+				padding: 1em;
+				font-size: 2.25em;
+				font-weight: bold;
+				color: black;
+				opacity: 0.62;
+				cursor: pointer;
+				width: 100%;
+				border: 2px solid black;
+				border-radius: 5px;
+				text-align: left;
+				outline: none;
+			}
+
+			.content {
+				background: rbga(255, 255, 255, 0.1);
+				margin: 0 18px;
+				padding: 0 18px;
+				overflow: hidden;
+				max-height: 0;
+				transition: max-height 0.75s ease;
+			}
+
+			.active .collapsible:hover { opacity: 1; }
+
+			.collapsible:after {
+				content: '\002b';
+				color: black;
+				float: right;
+				margin-right: 5px;
+			}
+
+			.active:after { content: '\2212'; }
 		</style>
 		<script>
 			/**
@@ -80,89 +104,111 @@
 				return `hsl(${h}, ${s}%, ${l}%)`
 			}
 
-			let lightText = () => {
-				return randHSL(
+			function lightMode() {
+				document.body.style.backgroundColor = randHSL(
+					10, 10, // sat 10% - 20%
+					80, 20  // lum 80% - 100%
+				);
+				document.body.style.color = randHSL(
 					40, 20, // sat 40% - 60%
 					5, 15   // lum 5% - 20%
 				);
 			}
-			let lightBG = () => {
-				return randHSL(
-					10, 10, // sat 10% - 20%
-					80, 20  // lum 80% - 100%
-				);
-			}
-			let darkText = () => {
-				return randHSL(
-					10, 10, // sat 10% - 20%
-					80, 20  // lum 80% - 100%
-				);
-			}
-			let darkBG = () => {
-				return randHSL(
+
+			function darkMode() {
+				document.body.style.backgroundColor = randHSL(
 					10, 20, // sat 20% - 30%
 					10, 10  // lum 10% - 20%
+				);
+				document.body.style.color = randHSL(
+					10, 10, // sat 10% - 20%
+					80, 20  // lum 80% - 100%
 				);
 			}
 		</script>
 	</head>
 <body>
-	<script>
-		if (Math.random() < .5) {
-			document.body.style.backgroundColor = darkBG();
-			document.body.style.color = darkText();
-		} else {
-			document.body.style.backgroundColor = lightBG();
-			document.body.style.color = lightText();
-		}
-	</script>
-	<button type="button" onclick="document.body.style.backgroundColor = darkBG(); document.body.style.color = darkText()">Dark Mode</button>
-	<button type="button" onclick="document.body.style.backgroundColor = lightBG(); document.body.style.color = lightText()">Light Mode</button>
+	<button type="button" onclick="darkMode()">Dark Mode</button>
+	<button type="button" onclick="lightMode()">Light Mode</button>
 	<span style="font-size: 10px;">(keep clicking if you want better colors)</span>
 	<div id="name">
 		<h1>Ashley</h1>	
 		<h3>Backend Engineer</h3>	
 	</div>
 	<div id="past-tech">
-		<h5>Stuff Ive worked and/or experimented with in the past:</h5>
-<p>
-Languages
-Python
-PHP
-HTML/CSS
-Javascript
-Typescript
-Elm
-Lua
-Go
-Ocaml
-Rust
-Zig
+		<h5>Stuff I've experimented and/or worked with in the past:</h5>
+		<h3>Languages</h3>
+		<ul class="skills">
+			<li>Rust</li>
+			<li>•</li>
+			<li>Zig</li>
+			<li>•</li>
+			<li>C</li>
+			<li>•</li>
+			<li>Go</li>
+			<li>•</li>
+			<li>Ocaml</li>
+			<li>•</li>
+			<li>PHP</li>
+			<li>•</li>
+			<li>HTML/CSS</li>
+			<li>•</li>
+			<li>Javascript</li>
+			<li>•</li>
+			<li>Typescript</li>
+			<li>•</li>
+			<li>Elm</li>
+			<li>•</li>
+			<li>Lua</li>
+		</ul>
 
-Frameworks/Libraries
-Vue.js
-Svelte
-Flask
-Laravel
-Tailwind
-Jquery
-Braintree Payments
-SCSS/SASS
+		<h3>Frameworks/Libraries</h3>
+		<ul class="skills">
+			<li>Axum</li>
+			<li>•</li>
+			<li>Bevy</li>
+			<li>•</li>
+			<li>Flask</li>
+			<li>•</li>
+			<li>Laravel</li>
+			<li>•</li>
+			<li>HTMX</li>
+			<li>•</li>
+			<li>jQuery</li>
+			<li>•</li>
+			<li>Vue</li>
+			<li>•</li>
+			<li>Svelte</li>
+			<li>•</li>
+			<li>Tailwind</li>
+			<li>•</li>
+			<li>Braintree Payments</li>
+			<li>•</li>
+			<li>SCSS/SASS</li>
+		</ul>
 
-Databases
-MySQL
-PostgreSQL
-SurrealDB
-MongoDB
-Redis
-Elasticsearch
-</p>
-	<div id="projects">
-		<h2>Rust Projects</h2>
+		<h3>Databases</h3>
+		<ul class="skills">
+			<li>MySQL</li>
+			<li>•</li>
+			<li>PostgreSQL</li>
+			<li>•</li>
+			<li>SurrealDB</li>
+			<li>•</li>
+			<li>MongoDB</li>
+			<li>•</li>
+			<li>Redis</li>
+			<li>•</li>
+			<li>Elasticsearch</li>
+		</ul>
+	</div>
+
+	<button type="button" class="collapsible">Rust Projects</button>
+	<div id="projects" class="content">
 		<div id="keyboardgen">
 			<h3>Keyboard Generator</h3>
 			<h5>Condition: Current priority. First time doing a lot of concurrent processing, very interesting problems.</h5>
-			<p>I don't like the QWERTY layout, it hurts my wrists. I could use Dvorak or a Coleman variant, but there's one major problem: I use vim. Specifically, I need the HJKL keys to stay in the same place. So I created a program that uses a genetic algorithm: randomly generating/modifying keyboards and running them in a fitness function that uses all my repos as training data.</p>
+			<p>I don't like the QWERTY layout, it hurts my wrists. I could use Dvorak or a Coleman variant, but there's one major problem: I use <span style="font-style: italic">vim</span>. Specifically, I need the HJKL keys to stay in the same place. So I created a program that uses a genetic algorithm: randomly generating/modifying keyboards and running them in a fitness function that uses all my repos as training data.</p>
 			<p>But there's a problem, local optima, I don't know if the generated keyboard is the best keyboard or just a good keyboard. The solution? Throw more compute at it! Generate 100 good keyboards and one of them is bound to be the most optimal one. But even when parallelizing with Rayon, it's a lot of work for my laptop.</p>
 			<p>The time complexity of the fitness function is inherently linear to the training data used. So the only way I can speed up the keyboard generation is by massively parallelizing the process. I would like to explore if there is any way I could utilize the GPU. But there are issues with that. So for now I'm implementing it as a REST API and building a separate composer app (now using Go!) so I can distribute the workload among all the old laptops, NUCs, and raspberry pis that I've accumulated over the years.</p>
 		</div>
@@ -194,8 +240,8 @@ Elasticsearch
 		</div>
 	</div>
 
-	<div id="workxp">
-		<h2>Work History</h2>
+	<button type="button" class="collapsible">Work History</button>
+	<div id="workxp" class="content">
 		<div id="wf">
 			<h3>Wells Fargo</h3>
 			<h5>September 2019 - November 2021,  Minneapolis MN (remote)</h5>
@@ -229,5 +275,24 @@ Elasticsearch
 			<p>Most importantly, this is where I learned how to keep my cool and make informed decisions while under pressure. I have a lot of nostalgia for this job, it's where I transitioned from an entry-level employee to being an experienced professional. if it weren't for constant mismanagement and incompatibilities with the culture, I would've probably worked there until retirement.</p>
 		</div>
 	</div>
+
+	<p style="font-style: italic; text-align: center;">Thank you for your consideration!</p>
+
+	<script>
+		if (Math.random() < .5) { darkMode() } else { lightMode() };
+
+		let cols = document.getElementsByClassName("collapsible");
+		for (let col of cols) {
+			col.addEventListener("click", function() {
+				this.classList.toggle("active");
+				let content = this.nextElementSibling;
+				if (content.style.maxHeight) {
+					content.style.maxHeight = null;
+				} else {
+					content.style.maxHeight = content.scrollHeight + "px";
+				}
+			});
+		}
+	</script>
 </body>
 </html>
