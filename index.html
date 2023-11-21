@@ -50,6 +50,10 @@
 				padding: 16px;
 			}
 
+			a {
+				font-weight: bold;
+			}
+
 			button.collapsible {
 				margin: 10px 0px;
 				padding: 1em;
@@ -90,6 +94,7 @@
 			 * Generates a random HSL color within a given saturation and luminance
 			 * range.
 			 *
+			 * @param {number} h - Set hue value.
 			 * @param {number} s_offset - Offset for saturation.
 			 * @param {number} s_rand - Range for random saturation (0 to s_rand).
 			 * @param {number} l_offset - Offset for luminance.
@@ -97,42 +102,63 @@
 			 * @returns {string} The generated HSL color in the format
 			 *   "hsl(hue, sat%, lum%)".
 			 */
-			function randHSL(s_offset, s_rand, l_offset, l_rand) {
-				let h = Math.random() * 360;
+			function randHSL(h, s_offset, s_rand, l_offset, l_rand) {
 				let s = Math.random() * s_rand + s_offset;
 				let l = Math.random() * l_rand + l_offset;
 				return `hsl(${h}, ${s}%, ${l}%)`
 			}
 
 			function lightMode() {
+				let bgHue = Math.random() * 360;
+				let textHue = (bgHue + 150) % 360;
+				let linkHue = (bgHue + 210) % 360;
 				document.body.style.backgroundColor = randHSL(
+					bgHue,
 					10, 10, // sat 10% - 20%
 					70, 20  // lum 70% - 90%
 				);
 				document.body.style.color = randHSL(
+					textHue,
 					40, 20, // sat 40% - 60%
-					5, 15   // lum 5% - 20%
+					0, 15   // lum 5% - 20%
+				);
+
+				let linkHSL = randHSL(
+					linkHue,
+					60, 20,
+					5, 15
 				);
 
 				let links = document.getElementsByTagName("a");
 				for (link of links) {
-					link.style.color = "black";
+					link.style.color = linkHSL;
 				}
 			}
 
 			function darkMode() {
+				let bgHue = Math.random() * 360;
+				let textHue = (bgHue + 150) % 360;
+				let linkHue = (bgHue + 210) % 360;
 				document.body.style.backgroundColor = randHSL(
+					bgHue,
 					10, 20, // sat 20% - 30%
 					10, 10  // lum 10% - 20%
 				);
 				document.body.style.color = randHSL(
+					textHue,
 					10, 10, // sat 10% - 20%
 					80, 20  // lum 80% - 100%
 				);
 
+				let linkHSL = randHSL(
+					linkHue,
+					40, 20,
+					80, 20
+				);
+
 				let links = document.getElementsByTagName("a");
 				for (link of links) {
-					link.style.color = "white";
+					link.style.color = linkHSL;
 				}
 			}
 		</script>
@@ -140,9 +166,10 @@
 <body>
 	<button type="button" onclick="darkMode()">Dark Mode</button>
 	<button type="button" onclick="lightMode()">Light Mode</button>
-	<span style="font-size: 12px;">(keep clicking if you want better colors)</span>
+	<span style="font-size: 12px;">(keep clicking if you want better colors!)</span>
 	<div id="name">
-		<h1>Ashley Almquist</h1>	
+		<h1>Ashley Almquist</h1>
+		<a href="mailto:ashley.a.almquist@gmail.com">ashley.a.almquist@gmail.com</a>
 		<h3>Backend Web Developer aspiring towards Systems Engineering</h3>	
 	</div>
 	<div id="past-tech">
