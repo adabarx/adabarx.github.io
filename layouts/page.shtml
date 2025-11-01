@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><ctx var="$page.title"></ctx> - <ctx var="$site.title"></ctx></title>
+    <title :text="$page.title"></title>
     <style>
         body {
             font-family: system-ui, -apple-system, sans-serif;
@@ -18,14 +18,12 @@
 </head>
 <body>
     <header>
-        <h1><ctx var="$site.title"></ctx></h1>
+        <h1 :text="$site.title"></h1>
         <nav>
             <a href="/">Home</a>
         </nav>
     </header>
-    <main>
-        <ctx var="$page.content"></ctx>
-    </main>
+    <main :html="$page.content()"></main>
     <footer>
         <p>Built with Zine</p>
     </footer>
