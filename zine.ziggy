@@ -1,0 +1,7 @@
+Site {
+   .title = "My Zine Site",
+   .host_url = "https://adabarx.github.io",
+   .content_dir_path = "content",
+   .layouts_dir_path = "layouts",
+   .assets_dir_path = "assets",
+}
