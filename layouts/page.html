@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><ctx var="$page.title"></ctx> - <ctx var="$site.title"></ctx></title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        h1 { color: #2563eb; }
+        a { color: #2563eb; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><ctx var="$site.title"></ctx></h1>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+    <main>
+        <ctx var="$page.content"></ctx>
+    </main>
+    <footer>
+        <p>Built with Zine</p>
+    </footer>
+</body>
+</html>
